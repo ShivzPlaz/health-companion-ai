@@ -22,12 +22,12 @@ function EmergencySelection() {
 
   return (
     <div
-      className="min-h-screen bg-[#050000] text-white flex flex-col relative overflow-hidden font-sans"
+      className="min-h-screen bg-transparent text-white flex flex-col relative overflow-hidden font-sans"
       role="alert"
       aria-live="assertive"
     >
       {/* Background Ambience */}
-      <div className="absolute inset-0 bg-gradient-to-br from-emergency-red-deep/40 via-background to-[#100000] z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-transparent to-transparent z-0 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-900/10 rounded-full blur-[150px] z-0 pointer-events-none" />
       <Activity className="absolute right-20 top-20 h-[500px] w-[500px] text-red-500/5 animate-pulse z-0 pointer-events-none" />
 
@@ -67,7 +67,7 @@ function EmergencySelection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <div className="glass-emergency p-8 rounded-3xl flex flex-col items-center text-center h-full border border-red-500/30 shadow-2xl hover:shadow-[0_0_40px_rgba(229,57,53,0.3)] transition-all group">
+            <div className="glass p-8 rounded-3xl flex flex-col items-center text-center h-full border border-red-500/30 shadow-2xl hover:shadow-[0_0_40px_rgba(229,57,53,0.3)] transition-all group">
               <div className="w-24 h-24 rounded-full bg-gradient-to-b from-red-500 to-red-700 flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform">
                 <Ambulance className="h-12 w-12 text-white" />
               </div>
@@ -90,7 +90,7 @@ function EmergencySelection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <div className="glass-medical bg-slate-900/60 p-8 rounded-3xl flex flex-col items-center text-center h-full border border-blue-500/30 shadow-2xl hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] transition-all group">
+            <div className="glass p-8 rounded-3xl flex flex-col items-center text-center h-full border border-blue-500/30 shadow-2xl hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] transition-all group">
               <div className="w-24 h-24 rounded-full bg-gradient-to-b from-blue-500 to-blue-700 flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform">
                 <Hospital className="h-12 w-12 text-white" />
               </div>

@@ -66,9 +66,9 @@ function AmbulanceTracking() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 font-sans flex flex-col">
+    <div className="min-h-screen bg-transparent font-sans flex flex-col">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-border/40 px-4 py-3 flex items-center justify-between shadow-sm">
+      <header className="sticky top-0 z-50 glass border-b border-border/40 px-4 py-3 flex items-center justify-between shadow-sm">
         <div className="flex items-center gap-3">
           <Button variant="ghost" size="icon" onClick={() => navigate({ to: "/emergency" })}>
             <ArrowLeft className="h-5 w-5" />
@@ -85,9 +85,9 @@ function AmbulanceTracking() {
 
       <div className="flex-1 overflow-hidden flex flex-col lg:flex-row">
         {/* Left Side: Map & Live Tracking (Full width on mobile, half on desktop) */}
-        <div className="flex-1 relative bg-slate-200 dark:bg-slate-800 min-h-[400px] lg:min-h-full">
+        <div className="flex-1 relative glass min-h-[400px] lg:min-h-full">
           {/* Mock Interactive Map */}
-          <div className="absolute inset-0 bg-[#e5e3df] dark:bg-[#1a202c] overflow-hidden flex items-center justify-center">
+          <div className="absolute inset-0 glass overflow-hidden flex items-center justify-center">
             {/* Grid Pattern */}
             <div
               className="absolute inset-0 opacity-20"
@@ -125,7 +125,7 @@ function AmbulanceTracking() {
               <div className="bg-blue-500 text-white p-2 rounded-full shadow-lg border-2 border-white relative z-10">
                 <MapPin className="h-5 w-5" />
               </div>
-              <div className="bg-white/90 dark:bg-black/90 px-2 py-1 rounded text-xs font-bold shadow-md mt-1 border border-border">
+              <div className="glass px-2 py-1 rounded text-xs font-bold shadow-md mt-1 border border-border">
                 Your Location
               </div>
               <div className="absolute inset-0 bg-blue-500/30 rounded-full animate-ping scale-150" />
@@ -139,7 +139,7 @@ function AmbulanceTracking() {
               <div className="bg-red-500 text-white p-2 rounded-full shadow-lg border-2 border-white relative z-20">
                 <Ambulance className="h-5 w-5" />
               </div>
-              <div className="bg-white/90 dark:bg-black/90 px-2 py-1 rounded text-xs font-bold shadow-md mt-1 border border-border text-red-600">
+              <div className="glass px-2 py-1 rounded text-xs font-bold shadow-md mt-1 border border-border text-red-600">
                 4 min away
               </div>
             </motion.div>
@@ -148,13 +148,13 @@ function AmbulanceTracking() {
               <div className="bg-green-500 text-white p-2 rounded-full shadow-lg border-2 border-white relative z-10">
                 <Activity className="h-5 w-5" />
               </div>
-              <div className="bg-white/90 dark:bg-black/90 px-2 py-1 rounded text-xs font-bold shadow-md mt-1 border border-border">
+              <div className="glass px-2 py-1 rounded text-xs font-bold shadow-md mt-1 border border-border">
                 Apollo Hospital
               </div>
             </div>
 
             {/* Traffic Info overlay */}
-            <div className="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-2 rounded-lg shadow-md border border-border flex items-center gap-2 text-xs font-medium">
+            <div className="absolute top-4 left-4 glass backdrop-blur-md p-2 rounded-lg shadow-md border border-border flex items-center gap-2 text-xs font-medium">
               <div className="w-2 h-2 rounded-full bg-orange-500" />
               Moderate Traffic
             </div>
@@ -162,10 +162,10 @@ function AmbulanceTracking() {
         </div>
 
         {/* Right Side: Dashboard Info */}
-        <div className="w-full lg:w-[450px] bg-white dark:bg-slate-900 border-l border-border/40 flex flex-col h-[50vh] lg:h-full overflow-y-auto custom-scrollbar shadow-2xl relative z-10">
+        <div className="w-full lg:w-[450px] liquid-glass border-l border-border/40 flex flex-col h-[50vh] lg:h-full overflow-y-auto custom-scrollbar shadow-2xl relative z-10">
           <div className="p-4 space-y-4 pb-24">
             {/* Top Status Card */}
-            <Card className="p-4 bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-900/30 shadow-sm">
+            <Card className="p-4 glass border-red-200 dark:border-red-900/30 shadow-sm">
               <div className="flex justify-between items-start mb-3">
                 <div className="flex items-center gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
@@ -194,7 +194,7 @@ function AmbulanceTracking() {
             </Card>
 
             {/* Driver Card */}
-            <Card className="p-4 shadow-sm">
+            <Card className="p-4 shadow-sm glass">
               <div className="flex gap-4">
                 <div className="relative">
                   <div className="w-14 h-14 rounded-full bg-slate-200 dark:bg-slate-800 border-2 border-white dark:border-slate-700 overflow-hidden flex items-center justify-center shadow-sm">

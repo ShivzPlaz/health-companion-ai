@@ -347,9 +347,9 @@ function ChatPage() {
   };
 
   return (
-    <div className="flex h-[calc(100vh-4rem)] bg-background">
+    <div className="flex h-[calc(100vh-4rem)] bg-transparent">
       {/* Sidebar for chat history (Desktop only for simplicity here, but can adapt) */}
-      <div className="hidden w-64 border-r border-border/60 bg-muted/20 sm:block">
+      <div className="hidden w-64 border-r border-border/60 glass sm:block">
         <div className="p-4 border-b border-border/60 flex items-center justify-between">
           <h2 className="font-semibold text-sm">{t("chat.conversations")}</h2>
           <Button variant="ghost" size="icon" onClick={startNewChat}>
@@ -375,7 +375,7 @@ function ChatPage() {
 
       {/* Main Chat Area */}
       <div className="flex flex-1 flex-col relative overflow-hidden">
-        <header className="flex items-center justify-between border-b border-border/60 px-4 py-3 sm:px-6">
+        <header className="flex items-center justify-between border-b border-border/60 glass px-4 py-3 sm:px-6">
           <div>
             <h1 className="text-sm font-semibold">
               {chats.find((c) => c.id === currentChatId)?.title || t("chat.title")}
@@ -425,14 +425,14 @@ function ChatPage() {
           </div>
         </ScrollArea>
 
-        <div className="absolute bottom-0 left-0 right-0 border-t border-border/60 bg-background/80 backdrop-blur-md">
+        <div className="absolute bottom-0 left-0 right-0 border-t border-border/60 glass">
           <div className="mx-auto max-w-3xl px-4 py-3 sm:px-6">
             <div className="flex flex-wrap gap-2 pb-3">
               {["Headache", "Fever", "Cough", "Stomach pain"].map((q) => (
                 <button
                   key={q}
                   onClick={() => send(`I have a ${q.toLowerCase()}`)}
-                  className="rounded-full border border-border bg-card px-3 py-1 text-xs hover:bg-accent/50"
+                  className="rounded-full border border-border liquid-glass px-3 py-1 text-xs hover:bg-accent/50"
                 >
                   {q}
                 </button>
@@ -453,7 +453,7 @@ function ChatPage() {
                 </button>
               </div>
             )}
-            <Card className="flex items-end gap-2 border-border/60 p-2 shadow-card">
+            <Card className="flex items-end gap-2 border-border/60 p-2 shadow-card liquid-glass">
               <input
                 type="file"
                 accept="image/*"
@@ -516,7 +516,7 @@ function ChatPage() {
               <Button
                 onClick={() => send()}
                 size="icon"
-                className="bg-gradient-hero text-primary-foreground hover:opacity-95"
+                className="liquid-glass text-foreground hover:opacity-95 border border-border/50"
               >
                 <Send className="h-4 w-4" />
               </Button>
@@ -542,7 +542,7 @@ function Bubble({ msg }: { msg: Msg }) {
       className={`flex gap-3 ${isAi ? "" : "flex-row-reverse"}`}
     >
       <div
-        className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${isAi ? "bg-gradient-hero text-primary-foreground" : "bg-secondary text-secondary-foreground"}`}
+        className={`grid h-9 w-9 shrink-0 place-items-center rounded-full liquid-glass text-foreground border border-border/30`}
       >
         {isAi ? (
           <Bot className="h-4 w-4" />
@@ -552,7 +552,7 @@ function Bubble({ msg }: { msg: Msg }) {
       </div>
       <div className={`max-w-[78%] ${isAi ? "" : "items-end"}`}>
         <div
-          className={`rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${isAi ? "bg-muted text-foreground" : "bg-primary text-primary-foreground"}`}
+          className={`rounded-2xl px-4 py-2.5 text-sm leading-relaxed liquid-glass text-foreground ${!isAi && "border border-primary/50"}`}
         >
           {msg.image && (
             <img
@@ -574,7 +574,7 @@ function Bubble({ msg }: { msg: Msg }) {
 function TypingBubble() {
   return (
     <div className="flex gap-3">
-      <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-hero text-primary-foreground">
+      <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full liquid-glass text-foreground border border-border/30">
         <Bot className="h-4 w-4" />
       </div>
       <div className="flex items-center gap-1 rounded-2xl bg-muted px-4 py-3">

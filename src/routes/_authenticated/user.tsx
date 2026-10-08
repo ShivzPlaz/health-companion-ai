@@ -73,7 +73,7 @@ function UserHub() {
   };
 
   return (
-    <div className="bg-background">
+    <div className="bg-transparent">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -106,7 +106,7 @@ function UserHub() {
             >
               <Link
                 to={tile.to}
-                className="group block rounded-2xl border border-border/60 bg-card p-6 shadow-card transition-all hover:border-primary/30 hover:shadow-glow"
+                className="group block rounded-2xl border border-border/60 liquid-glass p-6 shadow-card transition-all hover:border-primary/30 hover:shadow-glow"
               >
                 <div
                   className={`grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br ${tile.color} text-white shadow-soft transition-transform group-hover:scale-110`}
@@ -124,7 +124,7 @@ function UserHub() {
           ))}
         </div>
 
-        <Card className="mt-10 border-border/60 p-6 shadow-card">
+        <Card className="mt-10 border-border/60 p-6 shadow-card liquid-glass">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-start gap-4">
               <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary-soft text-primary">
@@ -137,7 +137,7 @@ function UserHub() {
             </div>
             <Button
               onClick={handleExport}
-              className="shrink-0 bg-gradient-hero text-primary-foreground shadow-soft"
+              className="shrink-0 liquid-glass text-foreground shadow-soft border border-border/50"
             >
               <Download className="mr-2 h-4 w-4" /> {t("user.export")}
             </Button>

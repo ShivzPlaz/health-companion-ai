@@ -80,7 +80,7 @@ function LoginPage() {
             <button
               type="button"
               onClick={() => setIsRegister(false)}
-              className="font-medium text-primary hover:underline"
+              className="font-medium text-white hover:underline"
             >
               Sign in
             </button>
@@ -91,7 +91,7 @@ function LoginPage() {
             <button
               type="button"
               onClick={() => setIsRegister(true)}
-              className="font-medium text-primary hover:underline"
+              className="font-medium text-white hover:underline"
             >
               Create one
             </button>
@@ -151,7 +151,7 @@ function LoginPage() {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full bg-gradient-hero text-primary-foreground shadow-soft hover:opacity-95"
+          className="w-full liquid-glass text-foreground shadow-soft hover:opacity-95 border border-border/50"
         >
           {loading ? "Please wait..." : isRegister ? "Sign up" : "Sign in"}
         </Button>

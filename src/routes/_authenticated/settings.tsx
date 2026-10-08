@@ -88,7 +88,7 @@ function SettingsPage() {
         <p className="text-muted-foreground">Manage your account settings and preferences.</p>
       </div>
 
-      <Card className="border-border/60 bg-card/50 backdrop-blur-sm shadow-soft">
+      <Card className="border-border/60 liquid-glass shadow-soft">
         <form onSubmit={handleSave}>
           <CardHeader>
             <CardTitle>Profile Details</CardTitle>
@@ -102,7 +102,7 @@ function SettingsPage() {
                 <Input
                   id="name"
                   placeholder="John Doe"
-                  className="pl-9 bg-background/50"
+                  className="pl-9 glass"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
@@ -118,7 +118,7 @@ function SettingsPage() {
                   id="email"
                   type="email"
                   placeholder="john@example.com"
-                  className="pl-9 bg-background/50"
+                  className="pl-9 glass"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -134,7 +134,7 @@ function SettingsPage() {
                   id="password"
                   type="password"
                   placeholder="Leave blank to keep current password"
-                  className="pl-9 bg-background/50"
+                  className="pl-9 glass"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />

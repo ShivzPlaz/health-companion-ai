@@ -115,11 +115,11 @@ export function AppSidebar() {
   }, [location.pathname]);
 
   return (
-    <Sidebar>
+    <Sidebar className="glass border-r-0">
       <SidebarHeader className="border-b border-border/60 p-4">
         <Link to="/" className="flex items-center gap-2">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-hero shadow-soft">
-            <Stethoscope className="h-4 w-4 text-primary-foreground" />
+          <span className="grid h-8 w-8 place-items-center rounded-lg liquid-glass shadow-soft">
+            <Stethoscope className="h-4 w-4 text-foreground" />
           </span>
           <span className="text-sm font-semibold">NexCure AI</span>
         </Link>
@@ -127,7 +127,7 @@ export function AppSidebar() {
       <SidebarContent>
         <div className="p-3">
           <Button
-            className="w-full justify-start bg-gradient-hero text-primary-foreground shadow-soft hover:opacity-95"
+            className="w-full justify-start liquid-glass text-foreground shadow-soft hover:opacity-95 border border-border/50"
             onClick={() => {
               navigate({ to: "/chat" });
               window.dispatchEvent(new Event("new-chat"));

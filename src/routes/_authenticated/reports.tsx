@@ -69,8 +69,8 @@ function ReportsPage() {
   };
 
   return (
-    <div className="bg-background min-h-[calc(100vh-4rem)] flex flex-col">
-      <header className="flex items-center justify-between border-b border-border/60 px-4 py-3 sm:px-6">
+    <div className="bg-transparent min-h-[calc(100vh-4rem)] flex flex-col">
+      <header className="flex items-center justify-between border-b border-border/60 glass px-4 py-3 sm:px-6">
         <div>
           <h1 className="text-sm font-semibold">{t("reports.title")}</h1>
           <p className="text-xs text-muted-foreground">{t("reports.subtitle")}</p>
@@ -80,9 +80,9 @@ function ReportsPage() {
 
       <div className="flex-1 overflow-auto p-4 sm:p-6 w-full max-w-4xl mx-auto space-y-6">
         <div className="grid gap-6 md:grid-cols-2 h-full">
-          <Card className="border-border/60 p-6 shadow-card flex flex-col h-[500px]">
+          <Card className="border-border/60 p-6 shadow-card flex flex-col h-[500px] liquid-glass">
             <h2 className="text-lg font-semibold mb-4">{t("reports.upload_title")}</h2>
-            <div className="flex-1 border-2 border-dashed border-border rounded-xl flex flex-col items-center justify-center p-6 text-center relative overflow-hidden bg-muted/20">
+            <div className="flex-1 border-2 border-dashed border-border rounded-xl flex flex-col items-center justify-center p-6 text-center relative overflow-hidden glass">
               <input
                 type="file"
                 accept="image/*"
@@ -121,7 +121,7 @@ function ReportsPage() {
               <Button
                 onClick={analyzeReport}
                 disabled={!image || isAnalyzing}
-                className="w-full bg-gradient-hero text-primary-foreground shadow-soft"
+                className="w-full liquid-glass text-foreground shadow-soft border border-border/50"
               >
                 {isAnalyzing ? (
                   <>
@@ -136,13 +136,13 @@ function ReportsPage() {
             </div>
           </Card>
 
-          <Card className="border-border/60 p-6 shadow-card h-[500px] flex flex-col">
+          <Card className="border-border/60 p-6 shadow-card h-[500px] flex flex-col liquid-glass">
             <div className="flex items-center gap-2 mb-4">
               <FileText className="h-5 w-5 text-primary" />
               <h2 className="text-lg font-semibold">{t("reports.simplified_analysis")}</h2>
             </div>
 
-            <div className="flex-1 overflow-auto bg-muted/10 rounded-xl p-4 border border-border/50">
+            <div className="flex-1 overflow-auto glass rounded-xl p-4 border border-border/50">
               <AnimatePresence mode="wait">
                 {!image && !analysis && !isAnalyzing && (
                   <motion.div

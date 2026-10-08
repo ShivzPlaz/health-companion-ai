@@ -98,8 +98,8 @@ function AppointmentsPage() {
   };
 
   return (
-    <div className="flex h-[calc(100vh-4rem)] flex-col bg-background">
-      <header className="flex items-center justify-between border-b border-border/60 px-4 py-3 sm:px-6">
+    <div className="flex h-[calc(100vh-4rem)] flex-col bg-transparent">
+      <header className="flex items-center justify-between border-b border-border/60 glass px-4 py-3 sm:px-6">
         <div>
           <h1 className="text-sm font-semibold">{t("appointments.title")}</h1>
           <p className="text-xs text-muted-foreground">{t("appointments.subtitle")}</p>
@@ -114,14 +114,14 @@ function AppointmentsPage() {
               <h2 className="text-xl font-semibold">{t("appointments.consultations")}</h2>
               <Button
                 onClick={() => setBookingMode(true)}
-                className="bg-gradient-hero text-primary-foreground shadow-soft hover:opacity-95"
+                className="liquid-glass text-foreground shadow-soft hover:opacity-95 border border-border/50"
               >
                 <Plus className="mr-2 h-4 w-4" /> {t("appointments.book_new")}
               </Button>
             </div>
 
             {appointments.length === 0 ? (
-              <div className="flex flex-col items-center justify-center p-12 text-center border rounded-xl border-dashed">
+              <div className="flex flex-col items-center justify-center p-12 text-center border rounded-xl border-dashed glass">
                 <Calendar className="h-12 w-12 text-muted-foreground mb-4" />
                 <h3 className="text-lg font-medium">{t("appointments.no_appointments")}</h3>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -131,7 +131,7 @@ function AppointmentsPage() {
             ) : (
               <div className="grid gap-4 md:grid-cols-2">
                 {appointments.map((apt) => (
-                  <Card key={apt.id} className="p-4 flex flex-col gap-4 relative group">
+                  <Card key={apt.id} className="p-4 flex flex-col gap-4 relative group liquid-glass">
                     <div className="flex justify-between items-start">
                       <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
@@ -156,7 +156,7 @@ function AppointmentsPage() {
                         </Button>
                       </div>
                     </div>
-                    <div className="flex flex-col gap-2 text-sm text-muted-foreground bg-muted/50 p-3 rounded-lg">
+                    <div className="flex flex-col gap-2 text-sm text-muted-foreground glass p-3 rounded-lg">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                           <div className="flex items-center gap-1.5">
@@ -191,7 +191,7 @@ function AppointmentsPage() {
               {doctors.map((doc) => (
                 <Card
                   key={doc.id}
-                  className="p-5 flex flex-col gap-4 hover:border-primary/50 transition-colors"
+                  className="p-5 flex flex-col gap-4 hover:border-primary/50 transition-colors liquid-glass"
                 >
                   <div className="flex items-center gap-3">
                     <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">

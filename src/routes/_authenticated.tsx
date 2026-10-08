@@ -23,7 +23,7 @@ function AuthGate() {
 
   if (!ok) {
     return (
-      <div className="grid min-h-screen place-items-center bg-background text-sm text-muted-foreground">
+      <div className="grid min-h-screen place-items-center flex-1 text-sm text-white/50">
         Checking your session…
       </div>
     );
@@ -32,7 +32,7 @@ function AuthGate() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <div className="flex w-full flex-col min-h-screen bg-background">
+        <div className="flex w-full flex-col min-h-screen">
           <SiteHeader showSidebarTrigger />
           <div className="flex-1">
             <Outlet />

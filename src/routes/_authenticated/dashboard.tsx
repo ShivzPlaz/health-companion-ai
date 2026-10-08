@@ -164,7 +164,7 @@ function Dashboard() {
   ];
 
   return (
-    <div className="bg-background min-h-[calc(100vh-4rem)]">
+    <div className="bg-transparent min-h-[calc(100vh-4rem)]">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
@@ -177,7 +177,7 @@ function Dashboard() {
           </motion.div>
           <Button
             asChild
-            className="bg-gradient-hero text-primary-foreground shadow-soft hover:opacity-95 transition-transform active:scale-95"
+            className="liquid-glass text-foreground shadow-soft hover:opacity-95 transition-transform active:scale-95 border border-border/50"
           >
             <Link to="/chat">
               <MessageSquare className="mr-2 h-4 w-4" /> {t("dashboard.new_consultation")}
@@ -223,7 +223,7 @@ function Dashboard() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
             >
-              <Card className="border-border/60 p-5 shadow-card hover:shadow-lg transition-all duration-300 hover:border-primary/30 group">
+              <Card className="border-border/60 p-5 shadow-card hover:shadow-lg transition-all duration-300 hover:border-primary/30 group liquid-glass">
                 <div className="flex items-center justify-between">
                   <div
                     className={`grid h-10 w-10 place-items-center rounded-xl transition-colors duration-300 ${
@@ -256,7 +256,7 @@ function Dashboard() {
             transition={{ delay: 0.3 }}
             className="lg:col-span-2"
           >
-            <Card className="border-border/60 p-5 shadow-card h-full">
+            <Card className="border-border/60 p-5 shadow-card h-full liquid-glass">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="font-semibold">{t("dashboard.consultation_trends")}</h3>
@@ -327,7 +327,7 @@ function Dashboard() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <Card className="border-border/60 p-5 shadow-card h-full flex flex-col">
+            <Card className="border-border/60 p-5 shadow-card h-full flex flex-col liquid-glass">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold flex items-center gap-2">
                   <Pill className="h-4 w-4" /> {t("dashboard.medications")}
@@ -343,7 +343,7 @@ function Dashboard() {
               </div>
 
               {showAddMed && (
-                <div className="mb-4 space-y-2 p-3 bg-muted/30 rounded-lg border">
+                <div className="mb-4 space-y-2 p-3 glass rounded-lg border">
                   <Input
                     placeholder={t("dashboard.medicine_name")}
                     value={newMedName}
@@ -418,7 +418,7 @@ function Dashboard() {
             transition={{ delay: 0.5 }}
             className="lg:col-span-2"
           >
-            <Card className="border-border/60 p-5 shadow-card h-full">
+            <Card className="border-border/60 p-5 shadow-card h-full liquid-glass">
               <div className="flex items-center justify-between">
                 <h3 className="font-semibold">{t("dashboard.recent_consultations")}</h3>
                 <Button variant="ghost" size="sm" asChild>
@@ -455,7 +455,7 @@ function Dashboard() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            <Card className="border-border/60 p-5 shadow-card h-full">
+            <Card className="border-border/60 p-5 shadow-card h-full liquid-glass">
               <h3 className="font-semibold">{t("dashboard.symptom_history")}</h3>
               <p className="text-xs text-muted-foreground">{t("dashboard.most_reported")}</p>
               <div className="mt-4 space-y-4">

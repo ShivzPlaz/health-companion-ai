@@ -71,9 +71,9 @@ function HospitalHelpline() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0a0f18] font-sans">
+    <div className="min-h-screen bg-transparent font-sans">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-border/40 px-4 py-4 md:px-8 flex items-center justify-between shadow-sm">
+      <header className="sticky top-0 z-50 glass border-b border-border/40 px-4 py-4 md:px-8 flex items-center justify-between shadow-sm">
         <div className="flex items-center gap-4">
           <Button
             variant="ghost"
@@ -99,7 +99,7 @@ function HospitalHelpline() {
           {hospitals.map((hosp, idx) => (
             <Card
               key={idx}
-              className="overflow-hidden border-border/50 shadow-lg hover:shadow-xl transition-all group bg-white dark:bg-slate-900"
+              className="overflow-hidden border-border/50 shadow-lg hover:shadow-xl transition-all group liquid-glass"
             >
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
@@ -126,7 +126,7 @@ function HospitalHelpline() {
                   </Badge>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 mb-6 p-4 bg-slate-50 dark:bg-slate-950 rounded-xl border border-border/50">
+                <div className="grid grid-cols-2 gap-4 mb-6 p-4 glass rounded-xl border border-border/50">
                   <div>
                     <div className="text-xs text-muted-foreground mb-1 flex items-center gap-1">
                       <Clock className="h-3 w-3" /> Est. Wait Time

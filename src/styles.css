@@ -2,6 +2,14 @@
 @source "../src";
 @import "tw-animate-css";
 
+/* ── Fonts ── */
+@import "@fontsource/geist-sans/400.css";
+@import "@fontsource/geist-sans/500.css";
+@import "@fontsource/geist-sans/600.css";
+@import "@fontsource/geist-sans/700.css";
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -74,7 +82,11 @@
 
 :root {
   --radius: 0.875rem;
-  --background: oklch(0.99 0.005 230);
+  /* ── Hero palette (from spec: 260 87% 3% bg, 40 6% 95% fg) ── */
+  --hero-bg: hsl(260, 87%, 3%);
+  --hero-fg: hsl(40, 6%, 95%);
+  --hero-sub: hsl(40, 6%, 82%);
+  --background: transparent;
   --foreground: oklch(0.2 0.04 250);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.2 0.04 250);
@@ -125,7 +137,7 @@
 }
 
 .dark {
-  --background: oklch(0.16 0.03 250);
+  --background: transparent;
   --foreground: oklch(0.97 0.01 230);
   --card: oklch(0.21 0.035 250);
   --card-foreground: oklch(0.97 0.01 230);
@@ -159,7 +171,7 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar: oklch(0 0 0 / 20%);
   --sidebar-foreground: oklch(0.984 0.003 247.858);
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
@@ -188,6 +200,16 @@
 }
 
 @layer utilities {
+  .glass {
+    background-color: transparent !important;
+    backdrop-filter: blur(12px) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+  .liquid-glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
   .bg-gradient-hero {
     background-image: var(--gradient-hero);
   }
@@ -289,4 +311,279 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ── Font Families ── */
+:root {
+  --font-geist: "Geist Sans", "Inter", sans-serif;
+  --font-general-sans: "General Sans", "Inter", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: "Geist Sans", "Inter", sans-serif;
+  }
+}
+
+/* ── Liquid Glass (exact spec) ── */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── Hero Login Glass Card ── */
+.glass-login {
+  background: rgba(10, 8, 30, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.08),
+    0 32px 64px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ── Marquee ── */
+@keyframes marquee-scroll {
+  from { transform: translateX(0%); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee-scroll 20s linear infinite;
+}
+
+/* ── Doctor Float ── */
+@keyframes doctor-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-12px) rotate(0.5deg); }
+  66%       { transform: translateY(-6px) rotate(-0.3deg); }
+}
+.animate-doctor-float {
+  animation: doctor-float 6s ease-in-out infinite;
+}
+
+/* ── Icon Float ── */
+@keyframes icon-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+.animate-icon-float { animation: icon-float 3s ease-in-out infinite; }
+.animate-icon-float-2 { animation: icon-float 4s ease-in-out infinite 0.5s; }
+.animate-icon-float-3 { animation: icon-float 3.5s ease-in-out infinite 1s; }
+
+/* ── Logo Entrance ── */
+@keyframes logo-entrance {
+  0%   { opacity: 0; transform: scale(0.8) translateY(20px); filter: blur(8px); }
+  60%  { opacity: 1; transform: scale(1.03) translateY(-4px); filter: blur(0); }
+  100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+}
+.animate-logo-entrance {
+  animation: logo-entrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ── Fade Up ── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-fade-up-delay-1 { animation-delay: 0.15s; }
+.animate-fade-up-delay-2 { animation-delay: 0.3s; }
+.animate-fade-up-delay-3 { animation-delay: 0.45s; }
+.animate-fade-up-delay-4 { animation-delay: 0.6s; }
+.animate-fade-up-delay-5 { animation-delay: 0.75s; }
+
+/* ── Glow Pulse ── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), 0 0 40px rgba(139, 92, 246, 0.15); }
+  50%       { box-shadow: 0 0 30px rgba(139, 92, 246, 0.7), 0 0 60px rgba(139, 92, 246, 0.3); }
+}
+.animate-glow-pulse { animation: glow-pulse 2.5s ease-in-out infinite; }
+
+/* ── Emergency Glow ── */
+@keyframes emergency-glow {
+  0%, 100% { box-shadow: 0 0 30px rgba(239, 68, 68, 0.5), 0 0 60px rgba(239, 68, 68, 0.2); }
+  50%       { box-shadow: 0 0 50px rgba(239, 68, 68, 0.8), 0 0 100px rgba(239, 68, 68, 0.4); }
+}
+.animate-emergency-glow { animation: emergency-glow 2s ease-in-out infinite; }
+
+/* ── Scan Line ── */
+@keyframes scan-line {
+  from { top: 0%; }
+  to   { top: 100%; }
+}
+.animate-scan { animation: scan-line 2s linear infinite; }
+
+/* ── Orbit ── */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+}
+.animate-orbit { animation: orbit 8s linear infinite; }
+.animate-orbit-reverse { animation: orbit 12s linear infinite reverse; }
+
+/* ── Gradient shift ── */
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* ── Feature card ── */
+.feature-card {
+  background: rgba(15, 10, 40, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.feature-card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
+  transform: translateY(-4px);
+}
+
+/* ── Nexcure Hero Background ── */
+.nexcure-hero-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(88, 28, 235, 0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 30%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 20% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+    linear-gradient(160deg, #050314 0%, #0a0628 40%, #080520 70%, #030216 100%);
+}
+
+/* ── Section divider ── */
+.section-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+}
+
+/* ── Scroll reveal ── */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Workflow step connector ── */
+.workflow-connector {
+  background: linear-gradient(180deg, rgba(139, 92, 246, 0.6) 0%, rgba(59, 130, 246, 0.6) 100%);
+}
+
+/* ── GPS status badge ── */
+.gps-live {
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: #4ade80;
+}
+.gps-last-known {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fbbf24;
+}
+
+/* ── Video Background Wrapper ── */
+.video-bg-wrapper {
+  position: relative;
+  overflow: hidden;
+  background: var(--hero-bg, hsl(260, 87%, 3%));
+}
+
+.video-bg-wrapper > video.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* No gradient overlay as per spec */
+}
+
+/* Blurred overlay shape behind hero content */
+.hero-blur-shape {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 984px;
+  height: 527px;
+  opacity: 0.9;
+  background: hsl(260, 87%, 3%);
+  filter: blur(82px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Hero content layer */
+.video-bg-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* ── Hero Secondary Button ── */
+.btn-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: "Geist Sans", "Inter", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--hero-fg, hsl(40, 6%, 95%));
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+.btn-hero-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
+}
+.btn-hero-secondary:active {
+  transform: scale(0.97);
 }

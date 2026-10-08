@@ -1,8 +1,7 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { Stethoscope, Globe, LogOut } from "lucide-react";
+import { Stethoscope, LogOut } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { isAuthed, signOut } from "@/lib/auth";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
@@ -27,8 +26,8 @@ export function SiteHeader({ showSidebarTrigger = false }: { showSidebarTrigger?
         <div className="flex items-center gap-4">
           {showSidebarTrigger && <SidebarTrigger />}
           <Link to="/" className="flex items-center gap-2 group">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-hero shadow-soft transition-transform group-hover:scale-105">
-              <Stethoscope className="h-5 w-5 text-primary-foreground" />
+            <span className="grid h-9 w-9 place-items-center rounded-xl liquid-glass shadow-soft transition-transform group-hover:scale-105">
+              <Stethoscope className="h-5 w-5 text-foreground" />
             </span>
             <div className="leading-tight">
               <p className="text-sm font-semibold">NexCure AI</p>
@@ -37,29 +36,17 @@ export function SiteHeader({ showSidebarTrigger = false }: { showSidebarTrigger?
           </Link>
         </div>
         <nav className="hidden items-center gap-6 md:flex">
-          {authed && (
-            <Link
-              to="/user"
-              className="text-sm font-medium text-primary hover:text-foreground transition-colors"
-            >
-              My Health
-            </Link>
-          )}
         </nav>
         <div className="flex items-center gap-1.5">
-          <Button variant="ghost" size="icon" aria-label="Language">
-            <Globe className="h-5 w-5" />
+          <Button
+            asChild
+            size="sm"
+            className="glass-emergency animate-emergency-glow text-white shadow-soft mr-2 border border-red-500/50"
+          >
+            <Link to="/emergency">Emergency</Link>
           </Button>
-          <ThemeToggle />
           {authed ? (
             <>
-              <Button
-                asChild
-                size="sm"
-                className="bg-gradient-hero text-primary-foreground shadow-soft hover:opacity-90"
-              >
-                <Link to="/user">My Health</Link>
-              </Button>
               <Button
                 variant="ghost"
                 size="icon"
@@ -80,7 +67,7 @@ export function SiteHeader({ showSidebarTrigger = false }: { showSidebarTrigger?
               <Button
                 asChild
                 size="sm"
-                className="bg-gradient-hero text-primary-foreground shadow-soft hover:opacity-90"
+                className="liquid-glass text-foreground shadow-soft hover:opacity-90 border border-border/50"
               >
                 <Link to="/login">Get started</Link>
               </Button>

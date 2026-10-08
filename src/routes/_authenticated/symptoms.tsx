@@ -127,7 +127,7 @@ function SymptomsPage() {
     selected.includes("Shortness of Breath");
 
   return (
-    <div className="bg-background min-h-[calc(100vh-4rem)]">
+    <div className="bg-transparent min-h-[calc(100vh-4rem)]">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
         <div className="mb-8">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{t("symptoms.title")}</h1>
@@ -136,7 +136,7 @@ function SymptomsPage() {
 
         <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr]">
           {/* Selector */}
-          <Card className="border-border/60 p-6 shadow-card h-fit">
+          <Card className="border-border/60 p-6 shadow-card h-fit liquid-glass">
             <div className="space-y-6">
               <div>
                 <label className="text-sm font-semibold">{t("symptoms.symptoms_label")}</label>
@@ -146,7 +146,7 @@ function SymptomsPage() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder={t("symptoms.search")}
-                    className="pl-9"
+                    className="pl-9 glass"
                   />
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -159,7 +159,7 @@ function SymptomsPage() {
                         className={`rounded-full border px-3 py-1.5 text-sm transition-all ${
                           on
                             ? "border-primary bg-primary text-primary-foreground shadow-soft"
-                            : "border-border bg-card hover:bg-accent/40"
+                            : "border-border liquid-glass hover:bg-accent/40"
                         }`}
                       >
                         {s}
@@ -224,7 +224,7 @@ function SymptomsPage() {
                 onClick={analyzeSymptoms}
                 size="lg"
                 disabled={isAnalyzing || selected.length === 0}
-                className="w-full bg-gradient-hero text-primary-foreground shadow-soft hover:opacity-95 transition-all"
+                className="w-full liquid-glass text-foreground shadow-soft hover:opacity-95 transition-all border border-border/50"
               >
                 {isAnalyzing ? (
                   <>
@@ -248,7 +248,7 @@ function SymptomsPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                 >
-                  <Card className="border-destructive/40 bg-destructive/10 p-5 shadow-sm">
+                  <Card className="border-destructive/40 bg-destructive/10 p-5 shadow-sm liquid-glass">
                     <div className="flex items-start gap-4">
                       <ShieldAlert className="h-6 w-6 shrink-0 text-destructive" />
                       <div className="flex-1">
@@ -269,7 +269,7 @@ function SymptomsPage() {
             </AnimatePresence>
 
             {!analyzed && !isAnalyzing && (
-              <div className="flex flex-col items-center justify-center h-[300px] text-muted-foreground border-2 border-dashed rounded-xl p-8 text-center bg-muted/10">
+              <div className="flex flex-col items-center justify-center h-[300px] text-muted-foreground border-2 border-dashed rounded-xl p-8 text-center glass">
                 <Brain className="h-12 w-12 mb-4 opacity-20" />
                 <h3 className="text-lg font-medium">{t("symptoms.awaiting_title")}</h3>
                 <p className="text-sm mt-1 max-w-xs">{t("symptoms.awaiting_desc")}</p>
@@ -317,7 +317,7 @@ function SymptomsPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.4 }}
                 >
-                  <Card className="border-border/60 p-5 shadow-card">
+                  <Card className="border-border/60 p-5 shadow-card liquid-glass">
                     <div className="flex items-start gap-4">
                       <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary">
                         <MapPin className="h-5 w-5" />
@@ -348,7 +348,7 @@ function SymptomsPage() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <Card className="border-border/60 bg-muted/30 p-4">
+                  <Card className="border-border/60 glass p-4">
                     <div className="flex items-start gap-3">
                       <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
                       <p className="text-xs text-muted-foreground">{t("symptoms.disclaimer")}</p>
@@ -382,7 +382,7 @@ function ResponseCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className="border-border/60 p-5 shadow-card">
+      <Card className="border-border/60 p-5 shadow-card liquid-glass">
         <div className="flex items-center gap-3">
           <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary-soft text-primary">
             <Icon className="h-5 w-5" />
@@ -393,7 +393,7 @@ function ResponseCard({
           {items.map((it, i) => (
             <li
               key={i}
-              className="flex items-start justify-between gap-3 rounded-lg bg-muted/40 px-3 py-2 text-sm"
+              className="flex items-start justify-between gap-3 rounded-lg glass px-3 py-2 text-sm"
             >
               <span>{it.label}</span>
               {it.note && (

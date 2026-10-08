@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useEffect, useRef } from "react";
 import {
   Outlet,
   Link,
@@ -96,6 +97,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
+      {
+        rel: "preconnect",
+        href: "https://api.fontshare.com",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap",
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -118,14 +135,90 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+const BG_VIDEO_URL =
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_065045_c44942da-53c6-4804-b734-f9e07fc22e08.mp4";
+
+function useVideoFade(videoRef: React.RefObject<HTMLVideoElement | null>) {
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const FADE_DURATION = 0.5;
+    let rafId: number;
+    let isDestroyed = false;
+
+    function fadeLoop() {
+      if (isDestroyed || !video) return;
+      const { currentTime, duration } = video;
+      if (!duration || isNaN(duration)) {
+        rafId = requestAnimationFrame(fadeLoop);
+        return;
+      }
+      const timeLeft = duration - currentTime;
+
+      if (currentTime < FADE_DURATION) {
+        video.style.opacity = String(Math.min(currentTime / FADE_DURATION, 1));
+      } else if (timeLeft < FADE_DURATION) {
+        video.style.opacity = String(Math.max(timeLeft / FADE_DURATION, 0));
+      } else {
+        video.style.opacity = "1";
+      }
+      rafId = requestAnimationFrame(fadeLoop);
+    }
+
+    function handleEnded() {
+      if (isDestroyed || !video) return;
+      video.style.opacity = "0";
+      setTimeout(() => {
+        if (isDestroyed || !video) return;
+        video.currentTime = 0;
+        video.play().catch(() => {});
+        rafId = requestAnimationFrame(fadeLoop);
+      }, 100);
+    }
+
+    video.addEventListener("ended", handleEnded);
+    video.play().catch(() => {});
+    rafId = requestAnimationFrame(fadeLoop);
+
+    return () => {
+      isDestroyed = true;
+      cancelAnimationFrame(rafId);
+      video.removeEventListener("ended", handleEnded);
+      video.pause();
+    };
+  }, [videoRef]);
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useVideoFade(videoRef);
 
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <Outlet />
-        <Toaster richColors position="top-right" />
+        <div className="video-bg-wrapper min-h-screen flex flex-col overflow-hidden text-white font-geist">
+          {/* Looping background video */}
+          <video
+            ref={videoRef}
+            className="bg-video"
+            src={BG_VIDEO_URL}
+            muted
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+          />
+
+          {/* Blurred overlay shape */}
+          <div className="hero-blur-shape" aria-hidden="true" />
+
+          {/* Content layer above video */}
+          <div className="video-bg-content flex flex-col min-h-screen">
+            <Outlet />
+            <Toaster richColors position="top-right" />
+          </div>
+        </div>
       </ThemeProvider>
     </QueryClientProvider>
   );
